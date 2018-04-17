@@ -3,5 +3,5 @@ spec:
     spec:
       containers:
         - name: front-end
-          image: pavanraj29/nodejs-app-demo
+          image: durgaoct1989/nodejs-app-demo
           imagePullPolicy: "Always"
