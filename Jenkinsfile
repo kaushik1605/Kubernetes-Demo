@@ -20,7 +20,7 @@ pipeline {
         deployment = "nodejs"
         DEPLOYMENTFILE = "deploy-green.yml"
         VERSION= "${BUILD_ID}"
-        image= "pavanraj29/nodejs-app-demo"
+        image= "durgaoct1989/nodejs-app-demo"
      }
     
     stages {
