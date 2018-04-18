@@ -76,14 +76,14 @@ pipeline {
             steps {
                 sh '''
                 #cd Kubernetes-Demo
-                curr_env=`kubectl get svc nodejs-service -o jsonpath="{.spec.selector.color}"`
+                curr_env=`kubectl get svc service-blue-green -o jsonpath="{.spec.selector.color}"`
                 if [ $curr_env = "blue" ];then new_env="green";else new_env="blue";fi
                  sed -i -e 's/nodejs-app-demo/nodejs-app-demo:'${VERSION}'/g' deploy-${new_env}.yaml
                 sed -i -e 's/envColor/"'${new_env}'"/g' patch-svc.yaml
                 kubectl create -f deploy-${new_env}.yaml
-                kubectl patch svc ${service} -p "$(cat patch-svc.yaml)"
+                kubectl patch svc service-blue-green -p "$(cat patch-svc.yaml)"
                 sleep 60
-                SERVICE_IP=`kubectl get svc nodejs-service -o jsonpath="{.status.loadBalancer.ingress[0].*}"`
+                SERVICE_IP=`kubectl get svc service-blue-green -o jsonpath="{.status.loadBalancer.ingress[0].*}"`
                 response=$(curl --write-out %{http_code} --silent --output /dev/null ${SERVICE_IP})
                 if [ $response = 200 ];then kubectl delete -f deploy-${curr_env}.yaml;else "deployment not successful";fi
                 '''
