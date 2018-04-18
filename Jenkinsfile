@@ -39,6 +39,7 @@ pipeline {
         }
         stage("Docker image tag") {
             steps {
+                sh 'echo ${image}'
                 sh 'sudo  docker tag nodejs-image-new ${image}:${VERSION}'
                 //sh 'sudo  docker tag nodejs-image-new ${image}'
             }
