@@ -4,7 +4,7 @@ metadata:
   name: service-blue-green
 spec:
   selector:
-    app: nodeapp
+    app: nodeapp-bg
     color: green
   type: LoadBalancer
   ports:
