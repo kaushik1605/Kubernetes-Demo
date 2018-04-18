@@ -12,11 +12,11 @@ spec:
   minReadySeconds: 5
   selector:
     matchLabels:
-      app: nodeapp
+      app: nodeapp-bg
   template:
     metadata:
       labels:
-        app: nodeapp
+        app: nodeapp-bg
         color: green
     spec:
       containers:
