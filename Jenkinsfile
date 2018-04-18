@@ -45,7 +45,7 @@ pipeline {
         }
         stage("Docker image push") {
             steps {
-                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'Dockercreds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'docker-demo-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
                 sh '''sudo docker login -u $USERNAME -p $PASSWORD
                 sudo docker push ${image}:${VERSION}
                 #cd Kubernetes-Demo
