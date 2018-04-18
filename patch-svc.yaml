@@ -1,4 +1,4 @@
 spec:
  selector:
-    app: nodeapp
+    app: nodeapp-bg
     color: envColor
